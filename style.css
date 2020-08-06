@@ -14,14 +14,16 @@
   align-items: center;
 }
 
-.hide {
-  display: none;
-}
-
-.checkout-form {
+.checkout-form,
+.cash-checkout-form,
+.credit-checkout-form {
   display: flex;
   flex-direction: column;
   padding: 20px;
   background-color: white;
   width: 50%;
+}
+
+.hide {
+  display: none;
 }

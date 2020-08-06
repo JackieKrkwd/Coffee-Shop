@@ -149,14 +149,23 @@ const displayInCart = () => {
   checkoutButton.classList.add("checkout");
   cartContainer.append(checkoutButton);
   let formContainer = document.querySelector(".form-container");
-  let checkoutForm = document.querySelector(".checkout-form");
+  let cashCheckout = document.querySelector(".cash-checkout-form");
+  let creditCheckout = document.querySelector(".credit-checkout-form");
   checkoutButton.addEventListener("click", () => {
     formContainer.classList.remove("hide");
-    let totalForm = document.createElement("p");
-    totalForm.setAttribute("data-index", total);
-    let tax = 0.06 * total;
-    totalForm.innerText = `Total: ${total + tax}`;
-    checkoutForm.append(totalForm);
+    cashCheckout.classList.add("hide");
+    creditCheckout.classList.add("hide");
+  });
+  let cash = document.querySelector(".cash");
+  let credit = document.querySelector(".credit");
+  let checkoutForm = document.querySelector(".checkout-form");
+  cash.addEventListener("click", () => {
+    cashCheckout.classList.remove("hide");
+    checkoutForm.classList.add("hide");
+  });
+  credit.addEventListener("click", () => {
+    creditCheckout.classList.remove("hide");
+    checkoutForm.classList.add("hide");
   });
 };
 
@@ -179,19 +188,21 @@ cartContainer.addEventListener("click", (e) => {
 });
 
 // disables inputs when cash or credit is selected
-let cash = document.querySelector(".cash");
-let credit = document.querySelector(".credit");
+// let cash = document.querySelector(".cash");
+// let credit = document.querySelector(".credit");
 
-cash.addEventListener("click", () => {
-  let creditDisabled = document.querySelectorAll(".credit-disabled");
-  creditDisabled.forEach((input) => {
-    input.disabled = true;
-  });
-});
+// cash.addEventListener("click", () => {
+//   let creditDisabled = document.querySelectorAll(".credit-disabled");
+//   creditDisabled.classList.add("hide");
+// });
 
-credit.addEventListener("click", () => {
-  let cashDisabled = document.querySelectorAll(".cash-disabled");
-  cashDisabled.forEach((input) => {
-    input.disabled = true;
-  });
-});
+// credit.addEventListener("click", () => {
+//   let cashDisabled = document.querySelectorAll(".cash-disabled");
+//   cashDisabled.classList.add("hide");
+// });
+
+//TOTAL
+// let totalForm = document.createElement("p");
+// totalForm.setAttribute("data-index", total);
+// let tax = 0.06 * total;
+// totalForm.innerText = `Total: ${total + tax}`;
