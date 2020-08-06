@@ -2,64 +2,73 @@
 
 let menuItems = [
   {
+    image: "images/Coffee.jpg",
     name: "Coffee",
     category: "drink",
     description: "brown liquid",
     price: 2,
   },
   {
-    name: "Coffee",
+    image: "images/cappuccino.jpg",
+    name: "Cappuccino",
     category: "drink",
     description: "brown liquid",
+    price: 3,
+  },
+  {
+    image: "images/Espresso.jpg",
+    name: "Espresso",
+    category: "drink",
+    description: "brown liquid",
+    price: 3.5,
+  },
+  {
+    image: "images/Latte.jpg",
+    name: "Latte",
+    category: "drink",
+    description: "brown liquid",
+    price: 4,
+  },
+  {
+    image: "images/Iced Coffee.jpg",
+    name: "Iced Coffee",
+    category: "drink",
+    description: "brown liquid",
+    price: 2.5,
+  },
+  {
+    image: "images/nitro.jpg",
+    name: "Nitro Coffee",
+    category: "drink",
+    description: "brown liquid",
+    price: 4,
+  },
+  {
+    image: "images/Cookie.jpg",
+    name: "Cookie",
+    category: "food",
+    description: "brown food",
+    price: 1,
+  },
+  {
+    image: "images/muffin.jpg",
+    name: "Muffin",
+    category: "food",
+    description: "brown food",
     price: 2,
   },
   {
-    name: "Coffee",
-    category: "drink",
-    description: "brown liquid",
-    price: 2,
+    image: "images/croissant.jpg",
+    name: "Croissant",
+    category: "food",
+    description: "brown food",
+    price: 2.5,
   },
   {
-    image: 'https:images.app.goo.gl/LZmvocS43bYC5SW39',//img
-    name: "Coffee",
-    category: "drink",
-    description: "brown liquid",
-    price: 2,
-  },
-  {
-    name: "Coffee",
-    category: "drink",
-    description: "brown liquid",
-    price: 2,
-  },
-  {
-    name: "Coffee",
-    category: "drink",
-    description: "brown liquid",
-    price: 2,
-  },
-  {
-    name: "Coffee",
-    category: "drink",
-    description: "brown liquid",
-    price: 2,
-  },
-  {
-    name: "Coffee",
-    category: "drink",
-    description: "brown liquid",
-    price: 2,
-  },
-  {
-    name: "Coffee",
-    category: "drink",
-    description: "brown liquid",
-    price: 2,
-  },
-  {
-    name: "Coffee",
-    category: "drink",
-    description: "brown liquid",
+    image: "images/doughnut.jpg",
+    name: "Doughnut",
+    category: "food",
+    description: "brown food",
     price: 2,
   },
 ];
@@ -79,8 +88,11 @@ itemContainer.addEventListener("click", (e) => {
     cartArray.forEach((product) => {
       let amount = product.price;
       total += amount;
-      totalParagraph.innerText = `Total: ${total}`;
-    })
+    });
+    let tax = 0.06 * total;
+    totalParagraph.innerText = `Subtotal: ${total} Tax: ${tax} Total: ${
+      total + tax
+    }`;
     displayInCart();
   }
 });
@@ -89,6 +101,9 @@ const display = () => {
   itemContainer.innerHTML = "";
   menuItems.forEach((item, index) => {
     let card = document.createElement("div");
+    let image = document.createElement("img");
+    image.setAttribute("src", item.image);
+    image.classList.add("img");
     let nameParagraph = document.createElement("p");
     nameParagraph.innerText = item.name;
     let categoryParagraph = document.createElement("p");
@@ -102,6 +117,7 @@ const display = () => {
     addMenuItem.innerText = "add to cart";
     addMenuItem.setAttribute("data-index", index);
     card.append(
+      image,
       nameParagraph,
       categoryParagraph,
       descriptionParagraph,
@@ -128,6 +144,14 @@ const displayInCart = () => {
     card.append(nameParagraph, priceParagraph, deleteButton);
     cartContainer.append(card);
   });
+  let checkoutButton = document.createElement("button");
+  checkoutButton.innerText = "Checkout";
+  checkoutButton.classList.add("checkout");
+  cartContainer.append(checkoutButton);
+  let formContainer = document.querySelector(".form-container");
+  checkoutButton.addEventListener("click", () => {
+    formContainer.classList.remove("hide");
+  });
 };
 
 //REMOVES FROM CART WHEN YOU HIT DELETE
@@ -139,11 +163,11 @@ cartContainer.addEventListener("click", (e) => {
     cartArray.forEach((product) => {
       let amount = product.price;
       total += amount;
-      //total -= product.price
-      totalParagraph.innerText = `Total: ${total}`;
     });
+    let tax = 0.06 * total;
+    totalParagraph.innerText = `Subtotal: ${total} Tax: ${tax} Total: ${
+      total + tax
+    }`;
     displayInCart();
   }
 });
-
-
