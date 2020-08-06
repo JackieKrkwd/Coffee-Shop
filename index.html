@@ -36,49 +36,48 @@
 
     <!-- Form Container -->
     <div class="form-container hide">
-      <form class="checkout-form">
+      <div class="checkout-form">
         <h3>Cash or Credit?</h3>
-        <label for="cash">Cash</label>
-        <input
-          type="radio"
-          class="cash"
-          id="cash"
-          name="payment-type"
-          value="cash"
-        />
-        <label for="credit">Credit</label>
-        <input
-          type="radio"
-          class="credit"
-          id="credit"
-          name="payment-type"
-          value="credit"
-        />
-        <label for="amount-tendered">Amount Tendered:</label>
+        <a href="#" class="cash">Cash</a>
+        <a href="#" class="credit">Credit</a>
+      </div>
+      <!-- cash form -->
+      <form class="cash-checkout-form">
+        <label for="amount-tendered" class="cash-disabled"
+          >Amount Tendered:</label
+        >
         <input
           type="text"
           class="cash-disabled"
           name="amount-tendered"
           id="amount-tendered"
         />
-        <label for="credit-card-numbers">Credit Card #'s:</label>
+        <button>Submit</button>
+      </form>
+      <!-- credit form -->
+      <form class="credit-checkout-form">
+        <label for="credit-card-numbers" class="credit-disabled"
+          >Credit Card #'s:</label
+        >
         <input
           type="text"
           class="credit-disabled"
           name="credit-card-numbers"
           id="credit-card-numbers"
         />
-        <label for="expiration-date">Expiration date:</label>
+        <label for="expiration-date" class="credit-disabled"
+          >Expiration date:</label
+        >
         <input
           type="text"
           class="credit-disabled"
           name="expiration-date"
           id="expiration-date"
         />
-        <label for="CVV">CVV:</label>
+        <label for="CVV" class="credit-disabled">CVV:</label>
         <input type="text" class="credit-disabled" name="CVV" id="CVV" />
         <button>Submit</button>
-      </form>
+      </form?>
     </div>
 
     <!-- Locations Section -->
