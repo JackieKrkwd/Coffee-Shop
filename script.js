@@ -149,8 +149,13 @@ const displayInCart = () => {
   checkoutButton.classList.add("checkout");
   cartContainer.append(checkoutButton);
   let formContainer = document.querySelector(".form-container");
+  let checkoutForm = document.querySelector(".checkout-form");
   checkoutButton.addEventListener("click", () => {
     formContainer.classList.remove("hide");
+    let totalForm = document.createElement("p");
+    totalForm.setAttribute("data-index", total);
+    totalForm.innerText = `Total:${total}`;
+    checkoutForm.append(totalForm);
   });
 };
 
@@ -170,4 +175,22 @@ cartContainer.addEventListener("click", (e) => {
     }`;
     displayInCart();
   }
+});
+
+// disables inputs when cash or credit is selected
+let cash = document.querySelector(".cash");
+let credit = document.querySelector(".credit");
+
+cash.addEventListener("click", () => {
+  let creditDisabled = document.querySelectorAll(".credit-disabled");
+  creditDisabled.forEach((input) => {
+    input.disabled = true;
+  });
+});
+
+credit.addEventListener("click", () => {
+  let cashDisabled = document.querySelectorAll(".cash-disabled");
+  cashDisabled.forEach((input) => {
+    input.disabled = true;
+  });
 });

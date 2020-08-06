@@ -39,21 +39,44 @@
       <form class="checkout-form">
         <h3>Cash or Credit?</h3>
         <label for="cash">Cash</label>
-        <input type="radio" id="cash" name="payment-type" value="cash" />
+        <input
+          type="radio"
+          class="cash"
+          id="cash"
+          name="payment-type"
+          value="cash"
+        />
         <label for="credit">Credit</label>
-        <input type="radio" id="credit" name="payment-type" value="credit" />
+        <input
+          type="radio"
+          class="credit"
+          id="credit"
+          name="payment-type"
+          value="credit"
+        />
         <label for="amount-tendered">Amount Tendered:</label>
-        <input type="text" name="amount-tendered" id="amount-tendered" />
+        <input
+          type="text"
+          class="cash-disabled"
+          name="amount-tendered"
+          id="amount-tendered"
+        />
         <label for="credit-card-numbers">Credit Card #'s:</label>
         <input
           type="text"
+          class="credit-disabled"
           name="credit-card-numbers"
           id="credit-card-numbers"
         />
         <label for="expiration-date">Expiration date:</label>
-        <input type="text" name="expiration-date" id="expiration-date" />
+        <input
+          type="text"
+          class="credit-disabled"
+          name="expiration-date"
+          id="expiration-date"
+        />
         <label for="CVV">CVV:</label>
-        <input type="text" name="CVV" id="CVV" />
+        <input type="text" class="credit-disabled" name="CVV" id="CVV" />
         <button>Submit</button>
       </form>
     </div>
