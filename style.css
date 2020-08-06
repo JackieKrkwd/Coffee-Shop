@@ -1,0 +1,27 @@
+.img {
+  width: 200px;
+}
+
+.form-container {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hide {
+  display: none;
+}
+
+.checkout-form {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  background-color: white;
+  width: 50%;
+}
