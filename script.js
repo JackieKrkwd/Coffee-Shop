@@ -154,7 +154,8 @@ const displayInCart = () => {
     formContainer.classList.remove("hide");
     let totalForm = document.createElement("p");
     totalForm.setAttribute("data-index", total);
-    totalForm.innerText = `Total:${total}`;
+    let tax = 0.06 * total;
+    totalForm.innerText = `Total: ${total + tax}`;
     checkoutForm.append(totalForm);
   });
 };
