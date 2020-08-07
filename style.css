@@ -16,7 +16,8 @@
 
 .checkout-form,
 .cash-checkout-form,
-.credit-checkout-form {
+.credit-checkout-form,
+.receipt {
   display: flex;
   flex-direction: column;
   padding: 20px;
