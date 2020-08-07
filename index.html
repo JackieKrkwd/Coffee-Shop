@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="style.css" rel="stylesheet" />
-    <title>Coffee Shop</title>
+    <title>Coffee Shop Practice</title>
   </head>
   <body>
     <!-- Header -->
@@ -22,13 +22,11 @@
             <a href="#location" class="nav-links">Locations</a>
           </li>
           <li class="list-item">
-            <a href="#" class="nav-links">Cart</a>
+            <a href="#" class="nav-links cart-link">Cart</a>
           </li>
         </ul>
       </nav>
     </header>
-    <div class="cart"></div>
-    <p class="total"></p>
     <!-- About Section -->
     <section class="about" id="about">
       <h2 class="about-title">About</h2>
@@ -46,9 +44,12 @@
     <!-- Form Container -->
     <div class="form-container hide">
       <div class="checkout-form">
+        <div class="cart hide"></div>
+        <p class="total"></p>
         <h3>Cash or Credit?</h3>
         <a href="#" class="cash">Cash</a>
         <a href="#" class="credit">Credit</a>
+        <button class="return-home">Return To Main</button>
       </div>
       <!-- cash form -->
       <form class="cash-checkout-form">

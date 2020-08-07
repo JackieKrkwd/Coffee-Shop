@@ -1,7 +1,8 @@
 body,
 h1,
 ul,
-.footer-paragraph {
+.footer-paragraph,
+p {
   margin: 0;
   padding: 0;
 }
@@ -9,6 +10,10 @@ ul,
 .header {
   background-color: #155763;
   height: 115px;
+}
+
+.fitted {
+  display: flex;
 }
 
 .nav {
@@ -112,7 +117,9 @@ ul,
   flex-direction: column;
   padding: 20px;
   background-color: white;
-  width: 50%;
+  width: 30%;
+  height: 50%;
+  overflow: scroll;
 }
 
 .hide {

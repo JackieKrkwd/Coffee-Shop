@@ -76,7 +76,14 @@ let menuItems = [
 let itemContainer = document.querySelector(".item-container");
 let cartArray = [];
 let cartContainer = document.querySelector(".cart");
-
+let cartLink = document.querySelector(".cart-link");
+let cash = document.querySelector(".cash");
+let credit = document.querySelector(".credit");
+let checkoutForm = document.querySelector(".checkout-form");
+let formContainer = document.querySelector(".form-container");
+let cashCheckout = document.querySelector(".cash-checkout-form");
+let creditCheckout = document.querySelector(".credit-checkout-form");
+let returnToMainPage = document.createElement("button");
 let total = 0;
 
 //ADD TO CART
@@ -96,7 +103,16 @@ itemContainer.addEventListener("click", (e) => {
     )} Total: ${total + tax}`;
     displayInCart();
     console.log("hello add");
+    cartLink.innerText = `Cart (${cartArray.length})`;
   }
+});
+
+cartLink.addEventListener("click", () => {
+  cartContainer.classList.remove("hide");
+  formContainer.classList.remove("hide");
+  cashCheckout.classList.add("hide");
+  creditCheckout.classList.add("hide");
+  checkoutForm.classList.remove("hide");
 });
 
 const display = () => {
@@ -137,14 +153,6 @@ const display = () => {
 };
 display();
 
-let cash = document.querySelector(".cash");
-let credit = document.querySelector(".credit");
-let checkoutForm = document.querySelector(".checkout-form");
-
-let formContainer = document.querySelector(".form-container");
-let cashCheckout = document.querySelector(".cash-checkout-form");
-let creditCheckout = document.querySelector(".credit-checkout-form");
-
 const displayInCart = () => {
   cartContainer.innerHTML = "";
   cartArray.forEach((item, index) => {
@@ -160,16 +168,13 @@ const displayInCart = () => {
     card.append(nameParagraph, priceParagraph, deleteButton);
     cartContainer.append(card);
   });
-  let checkoutButton = document.createElement("button");
-  checkoutButton.innerText = "Checkout";
-  checkoutButton.classList.add("checkout");
-  cartContainer.append(checkoutButton);
-  checkoutButton.addEventListener("click", () => {
-    formContainer.classList.remove("hide");
-    cashCheckout.classList.add("hide");
-    creditCheckout.classList.add("hide");
-    checkoutForm.classList.remove("hide");
-    console.log("hello");
+  let returnToMainPage = document.querySelector(".return-home");
+  returnToMainPage.addEventListener("click", () => {
+    formContainer.classList.add("hide");
+    receiptContainer.classList.add("hide");
+    totalParagraph.innerText = "";
+    receiptContainer.innerHTML = "";
+    cartArray = [];
   });
 
   //CASH OR CREDIT SECTION
@@ -209,7 +214,7 @@ cashCheckout.addEventListener("submit", (e) => {
   let tax = 0.06 * total;
   let ourTotalForReceipt = total + tax;
   let changeAmount = amountTendered - ourTotalForReceipt;
-  changeAmountParagraph.innerText = changeAmount.toFixed(2);
+  changeAmountParagraph.innerText = `Change Due ${changeAmount.toFixed(2)}`;
   let returnToMainPage = document.createElement("button");
   returnToMainPage.innerText = "Return To Main Page";
   returnToMainPage.addEventListener("click", () => {
@@ -230,6 +235,7 @@ creditCheckout.addEventListener("submit", (e) => {
   total = 0;
   cartArray.forEach((cartItem) => {
     let newDiv = document.createElement("div");
+    newDiv.classList.add("fitted");
     let cartItemName = document.createElement("p");
     cartItemName.innerText = cartItem.name;
     let cartItemPrice = document.createElement("p");
@@ -275,6 +281,7 @@ cartContainer.addEventListener("click", (e) => {
     totalParagraph.innerText = `Subtotal: ${total} Tax: ${tax.toFixed(
       2
     )} Total: ${total + tax}`;
+    cartLink.innerText = `Cart (${cartArray.length})`;
     displayInCart();
   }
 });
