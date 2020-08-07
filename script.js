@@ -77,10 +77,7 @@ let itemContainer = document.querySelector(".item-container");
 let cartArray = [];
 let cartContainer = document.querySelector(".cart");
 
-
-
 let total = 0;
-
 
 //ADD TO CART
 let totalParagraph = document.querySelector(".total");
@@ -94,9 +91,9 @@ itemContainer.addEventListener("click", (e) => {
       total += amount;
     });
     let tax = (0.06).toFixed(2) * total;
-    totalParagraph.innerText = `Subtotal: ${total} Tax: ${tax.toFixed(2)} Total: ${
-      total + tax
-      }`;
+    totalParagraph.innerText = `Subtotal: ${total} Tax: ${tax.toFixed(
+      2
+    )} Total: ${total + tax}`;
     displayInCart();
   }
 });
@@ -141,7 +138,6 @@ let formContainer = document.querySelector(".form-container");
 let cashCheckout = document.querySelector(".cash-checkout-form");
 let creditCheckout = document.querySelector(".credit-checkout-form");
 
-
 const displayInCart = () => {
   cartContainer.innerHTML = "";
   cartArray.forEach((item, index) => {
@@ -165,6 +161,7 @@ const displayInCart = () => {
     formContainer.classList.remove("hide");
     cashCheckout.classList.add("hide");
     creditCheckout.classList.add("hide");
+    checkoutForm.classList.remove("hide");
   });
 
   //CASH OR CREDIT SECTION
@@ -200,18 +197,61 @@ cashCheckout.addEventListener("submit", (e) => {
     cartItemImage.classList.add("img");
     newDiv.append(cartItemImage, cartItemName, cartItemPrice);
     receiptContainer.append(newDiv);
-  })
-  let tax = .06 * total;
-  let ourTotalForReceipt = (total + tax);
+  });
+  let tax = 0.06 * total;
+  let ourTotalForReceipt = total + tax;
   let changeAmount = amountTendered - ourTotalForReceipt;
   changeAmountParagraph.innerText = changeAmount.toFixed(2);
-  receiptContainer.append(changeAmountParagraph);
+  let returnToMainPage = document.createElement("button");
+  returnToMainPage.innerText = "Return To Main Page";
+  returnToMainPage.addEventListener("click", () => {
+    formContainer.classList.add("hide");
+    receiptContainer.classList.add("hide");
+    cartContainer.innerHTML = "";
+    totalParagraph.innerText = "";
+    receiptContainer.innerHTML = "";
+    cartArray = [];
+  });
+  receiptContainer.append(changeAmountParagraph, returnToMainPage);
   cashCheckout.classList.add("hide");
   receiptContainer.classList.remove("hide");
 });
 
-// let creditDisabled = document.querySelectorAll(".credit-disabled");
-// creditDisabled.classList.add("hide");
+creditCheckout.addEventListener("submit", (e) => {
+  e.preventDefault();
+  total = 0;
+  cartArray.forEach((cartItem) => {
+    let newDiv = document.createElement("div");
+    let cartItemName = document.createElement("p");
+    cartItemName.innerText = cartItem.name;
+    let cartItemPrice = document.createElement("p");
+    cartItemPrice.innerText = cartItem.price;
+    let amount = cartItem.price;
+    total += amount;
+    let cartItemImage = document.createElement("img");
+    cartItemImage.setAttribute("src", cartItem.image);
+    cartItemImage.classList.add("img");
+    newDiv.append(cartItemImage, cartItemName, cartItemPrice);
+    receiptContainer.append(newDiv);
+  });
+  let tax = 0.06 * total;
+  let ourTotalForReceipt = total + tax;
+  let ourTotalParagraph = document.createElement("p");
+  ourTotalParagraph.innerText = ourTotalForReceipt.toFixed(2);
+  let returnToMainPage = document.createElement("button");
+  returnToMainPage.innerText = "Return To Main Page";
+  returnToMainPage.addEventListener("click", () => {
+    formContainer.classList.add("hide");
+    receiptContainer.classList.add("hide");
+    cartContainer.innerHTML = "";
+    totalParagraph.innerText = "";
+    receiptContainer.innerHTML = "";
+    cartArray = [];
+  });
+  receiptContainer.append(ourTotalParagraph, returnToMainPage);
+  creditCheckout.classList.add("hide");
+  receiptContainer.classList.remove("hide");
+});
 
 //REMOVES FROM CART WHEN YOU HIT DELETE
 cartContainer.addEventListener("click", (e) => {
@@ -224,29 +264,9 @@ cartContainer.addEventListener("click", (e) => {
       total += amount;
     });
     let tax = 0.06 * total;
-    totalParagraph.innerText = `Subtotal: ${total} Tax: ${tax.toFixed(2)} Total: ${
-      total + tax
-      }`;
+    totalParagraph.innerText = `Subtotal: ${total} Tax: ${tax.toFixed(
+      2
+    )} Total: ${total + tax}`;
     displayInCart();
   }
 });
-
-// disables inputs when cash or credit is selected
-// let cash = document.querySelector(".cash");
-// let credit = document.querySelector(".credit");
-
-// cash.addEventListener("click", () => {
-//   let creditDisabled = document.querySelectorAll(".credit-disabled");
-//   creditDisabled.classList.add("hide");
-// });
-
-// credit.addEventListener("click", () => {
-//   let cashDisabled = document.querySelectorAll(".cash-disabled");
-//   cashDisabled.classList.add("hide");
-// });
-
-//TOTAL
-// let totalForm = document.createElement("p");
-// totalForm.setAttribute("data-index", total);
-// let tax = 0.06 * total;
-// totalForm.innerText = `Total: ${total + tax}`;
