@@ -77,8 +77,12 @@ let itemContainer = document.querySelector(".item-container");
 let cartArray = [];
 let cartContainer = document.querySelector(".cart");
 
-//ADD TO CART
+
+
 let total = 0;
+
+
+//ADD TO CART
 let totalParagraph = document.querySelector(".total");
 itemContainer.addEventListener("click", (e) => {
   if (e.target.classList.contains("addToCart")) {
@@ -89,10 +93,10 @@ itemContainer.addEventListener("click", (e) => {
       let amount = product.price;
       total += amount;
     });
-    let tax = 0.06 * total;
-    totalParagraph.innerText = `Subtotal: ${total} Tax: ${tax} Total: ${
+    let tax = (0.06).toFixed(2) * total;
+    totalParagraph.innerText = `Subtotal: ${total} Tax: ${tax.toFixed(2)} Total: ${
       total + tax
-    }`;
+      }`;
     displayInCart();
   }
 });
@@ -129,6 +133,15 @@ const display = () => {
 };
 display();
 
+let cash = document.querySelector(".cash");
+let credit = document.querySelector(".credit");
+let checkoutForm = document.querySelector(".checkout-form");
+
+let formContainer = document.querySelector(".form-container");
+let cashCheckout = document.querySelector(".cash-checkout-form");
+let creditCheckout = document.querySelector(".credit-checkout-form");
+
+
 const displayInCart = () => {
   cartContainer.innerHTML = "";
   cartArray.forEach((item, index) => {
@@ -148,17 +161,13 @@ const displayInCart = () => {
   checkoutButton.innerText = "Checkout";
   checkoutButton.classList.add("checkout");
   cartContainer.append(checkoutButton);
-  let formContainer = document.querySelector(".form-container");
-  let cashCheckout = document.querySelector(".cash-checkout-form");
-  let creditCheckout = document.querySelector(".credit-checkout-form");
   checkoutButton.addEventListener("click", () => {
     formContainer.classList.remove("hide");
     cashCheckout.classList.add("hide");
     creditCheckout.classList.add("hide");
   });
-  let cash = document.querySelector(".cash");
-  let credit = document.querySelector(".credit");
-  let checkoutForm = document.querySelector(".checkout-form");
+
+  //CASH OR CREDIT SECTION
   cash.addEventListener("click", () => {
     cashCheckout.classList.remove("hide");
     checkoutForm.classList.add("hide");
@@ -168,6 +177,41 @@ const displayInCart = () => {
     checkoutForm.classList.add("hide");
   });
 };
+
+let receiptContainer = document.querySelector(".receipt");
+
+//SUBMIT CHECKOUT TO RECEIPT
+cashCheckout.addEventListener("submit", (e) => {
+  e.preventDefault();
+  let data = new FormData(cashCheckout);
+  let amountTendered = data.get("amount-tendered");
+  let changeAmountParagraph = document.createElement("p");
+  total = 0;
+  cartArray.forEach((cartItem) => {
+    let newDiv = document.createElement("div");
+    let cartItemName = document.createElement("p");
+    cartItemName.innerText = cartItem.name;
+    let cartItemPrice = document.createElement("p");
+    cartItemPrice.innerText = cartItem.price;
+    let amount = cartItem.price;
+    total += amount;
+    let cartItemImage = document.createElement("img");
+    cartItemImage.setAttribute("src", cartItem.image);
+    cartItemImage.classList.add("img");
+    newDiv.append(cartItemImage, cartItemName, cartItemPrice);
+    receiptContainer.append(newDiv);
+  })
+  let tax = .06 * total;
+  let ourTotalForReceipt = (total + tax);
+  let changeAmount = amountTendered - ourTotalForReceipt;
+  changeAmountParagraph.innerText = changeAmount.toFixed(2);
+  receiptContainer.append(changeAmountParagraph);
+  cashCheckout.classList.add("hide");
+  receiptContainer.classList.remove("hide");
+});
+
+// let creditDisabled = document.querySelectorAll(".credit-disabled");
+// creditDisabled.classList.add("hide");
 
 //REMOVES FROM CART WHEN YOU HIT DELETE
 cartContainer.addEventListener("click", (e) => {
@@ -180,9 +224,9 @@ cartContainer.addEventListener("click", (e) => {
       total += amount;
     });
     let tax = 0.06 * total;
-    totalParagraph.innerText = `Subtotal: ${total} Tax: ${tax} Total: ${
+    totalParagraph.innerText = `Subtotal: ${total} Tax: ${tax.toFixed(2)} Total: ${
       total + tax
-    }`;
+      }`;
     displayInCart();
   }
 });
