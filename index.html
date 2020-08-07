@@ -9,21 +9,30 @@
   <body>
     <!-- Header -->
     <header class="header">
-      <h1><a href="#">Logo</a></h1>
-      <nav>
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#menu">Menu Items</a></li>
-          <li><a href="#location">Locations</a></li>
+      <h1><a href="#" class="logo">Coffee Shop</a></h1>
+      <nav class="nav">
+        <ul class="list">
+          <li class="list-item">
+            <a href="#about" class="nav-links">About</a>
+          </li>
+          <li class="list-item">
+            <a href="#menu" class="nav-links">Menu Items</a>
+          </li>
+          <li class="list-item">
+            <a href="#location" class="nav-links">Locations</a>
+          </li>
+          <li class="list-item">
+            <a href="#" class="nav-links">Cart</a>
+          </li>
         </ul>
-        <div class="cart"></div>
-        <p class="total"></p>
       </nav>
     </header>
+    <div class="cart"></div>
+    <p class="total"></p>
     <!-- About Section -->
-    <section id="about">
-      <h2>About</h2>
-      <p>
+    <section class="about" id="about">
+      <h2 class="about-title">About</h2>
+      <p class="about-paragraph">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem odit
         minima velit ex corporis assumenda consequatur modi vel doloribus ullam,
         tenetur alias vitae odio eaque doloremque dolorum, omnis voluptas magni?
@@ -31,7 +40,7 @@
     </section>
 
     <!-- Order Section -->
-    <h2>Menu Items</h2>
+    <h2 class="menu-title">Menu Items</h2>
     <section class="item-container" id="menu"></section>
 
     <!-- Form Container -->
@@ -82,14 +91,17 @@
     </div>
 
     <!-- Locations Section -->
-    <section id="location">
-      <h2>Locations</h2>
-      <p>
+    <section class="location" id="location">
+      <h2 class="location-title">Locations</h2>
+      <p class="location-paragraph">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem odit
         minima velit ex corporis assumenda consequatur modi vel doloribus ullam,
         tenetur alias vitae odio eaque doloremque dolorum, omnis voluptas magni?
       </p>
     </section>
+    <footer class="footer">
+      <p class="footer-paragraph">Copyright 2020</p>
+    </footer>
     <script src="script.js"></script>
   </body>
 </html>

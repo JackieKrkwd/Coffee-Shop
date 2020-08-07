@@ -95,6 +95,7 @@ itemContainer.addEventListener("click", (e) => {
       2
     )} Total: ${total + tax}`;
     displayInCart();
+    console.log("hello add");
   }
 });
 
@@ -102,21 +103,27 @@ const display = () => {
   itemContainer.innerHTML = "";
   menuItems.forEach((item, index) => {
     let card = document.createElement("div");
+    card.classList.add("menu-card");
     let image = document.createElement("img");
     image.setAttribute("src", item.image);
     image.classList.add("img");
     let nameParagraph = document.createElement("p");
     nameParagraph.innerText = item.name;
+    nameParagraph.classList.add("card-paragraph");
     let categoryParagraph = document.createElement("p");
     categoryParagraph.innerText = item.category;
+    categoryParagraph.classList.add("card-paragraph");
     let descriptionParagraph = document.createElement("p");
     descriptionParagraph.innerText = item.description;
+    descriptionParagraph.classList.add("card-paragraph");
     let priceParagraph = document.createElement("p");
     priceParagraph.innerText = item.price;
+    priceParagraph.classList.add("class", "card-paragraph");
     let addMenuItem = document.createElement("button");
     addMenuItem.classList.add("addToCart");
-    addMenuItem.innerText = "add to cart";
+    addMenuItem.innerText = "Add to cart";
     addMenuItem.setAttribute("data-index", index);
+    addMenuItem.classList.add("class", "menu-btn");
     card.append(
       image,
       nameParagraph,
@@ -162,6 +169,7 @@ const displayInCart = () => {
     cashCheckout.classList.add("hide");
     creditCheckout.classList.add("hide");
     checkoutForm.classList.remove("hide");
+    console.log("hello");
   });
 
   //CASH OR CREDIT SECTION
