@@ -31,12 +31,40 @@ p {
 }
 
 .list {
+  display: flex;
   list-style: none;
-  margin-left: 10px;
+  justify-content: space-around;
+  margin-top: 40px;
+}
+
+.list-item {
+  border: 1px solid white;
+  padding: 5px;
+  border-radius: 5px;
 }
 
 .about {
   text-align: center;
+}
+
+.cart {
+  text-align: center;
+}
+
+.cart-border {
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 5px;
+  text-align: center;
+}
+
+.cart-text-styling {
+  padding: 5px;
+  text-align: center;
+}
+
+.delete {
+  width: 80%;
 }
 
 .about-title,
@@ -65,22 +93,28 @@ p {
 .img {
   width: 200px;
   height: 130px;
+  max-width: 100%;
 }
 
 .card-paragraph {
   margin: 5px;
 }
 
-.menu-btn {
+.menu-btn,
+.payment {
   margin-bottom: 5px;
   background-color: #155763;
   color: white;
   border: none;
   padding: 5px;
   border-radius: 5px;
+  text-align: center;
+  text-decoration: none;
 }
 
-.location {
+.location,
+.total,
+h3 {
   text-align: center;
 }
 
@@ -109,6 +143,10 @@ p {
   align-items: center;
 }
 
+.cash-disabled {
+  margin-bottom: 10px;
+}
+
 .checkout-form,
 .cash-checkout-form,
 .credit-checkout-form,
@@ -117,8 +155,8 @@ p {
   flex-direction: column;
   padding: 20px;
   background-color: white;
-  width: 30%;
-  height: 50%;
+  width: 40%;
+  height: 40%;
   overflow: scroll;
 }
 
