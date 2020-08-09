@@ -47,8 +47,8 @@
         <div class="cart hide"></div>
         <p class="total"></p>
         <h3>Cash or Credit?</h3>
-        <a href="#" class="cash">Cash</a>
-        <a href="#" class="credit">Credit</a>
+        <a href="#" class="cash payment">Cash</a>
+        <a href="#" class="credit payment">Credit</a>
         <button class="return-home">Return To Main</button>
       </div>
       <!-- cash form -->
@@ -58,6 +58,7 @@
         >
         <input
           type="text"
+          required
           class="cash-disabled"
           name="amount-tendered"
           id="amount-tendered"
@@ -71,6 +72,7 @@
         >
         <input
           type="text"
+          required
           class="credit-disabled"
           name="credit-card-numbers"
           id="credit-card-numbers"
@@ -80,12 +82,19 @@
         >
         <input
           type="text"
+          required
           class="credit-disabled"
           name="expiration-date"
           id="expiration-date"
         />
         <label for="CVV" class="credit-disabled">CVV:</label>
-        <input type="text" class="credit-disabled" name="CVV" id="CVV" />
+        <input
+          type="text"
+          required
+          class="credit-disabled cash-disabled"
+          name="CVV"
+          id="CVV"
+        />
         <button>Submit</button>
       </form>
       <div class="receipt hide">Receipt</div>

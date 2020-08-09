@@ -98,9 +98,9 @@ itemContainer.addEventListener("click", (e) => {
       total += amount;
     });
     let tax = (0.06).toFixed(2) * total;
-    totalParagraph.innerText = `Subtotal: ${total} Tax: ${tax.toFixed(
+    totalParagraph.innerText = `Subtotal: $${total.toFixed(
       2
-    )} Total: ${total + tax}`;
+    )} Tax: $${tax.toFixed(2)} Total: $${total + tax}`;
     displayInCart();
     console.log("hello add");
     cartLink.innerText = `Cart (${cartArray.length})`;
@@ -133,7 +133,7 @@ const display = () => {
     descriptionParagraph.innerText = item.description;
     descriptionParagraph.classList.add("card-paragraph");
     let priceParagraph = document.createElement("p");
-    priceParagraph.innerText = item.price;
+    priceParagraph.innerText = `$${item.price.toFixed(2)}`;
     priceParagraph.classList.add("class", "card-paragraph");
     let addMenuItem = document.createElement("button");
     addMenuItem.classList.add("addToCart");
@@ -157,12 +157,15 @@ const displayInCart = () => {
   cartContainer.innerHTML = "";
   cartArray.forEach((item, index) => {
     let card = document.createElement("div");
+    card.classList.add("cart-border");
     let nameParagraph = document.createElement("p");
     nameParagraph.innerText = item.name;
+    nameParagraph.classList.add("cart-text-styling");
     let priceParagraph = document.createElement("p");
-    priceParagraph.innerText = item.price;
+    priceParagraph.innerText = `$${item.price.toFixed(2)}`;
+    priceParagraph.classList.add("cart-text-styling");
     let deleteButton = document.createElement("button");
-    deleteButton.innerText = "Delete";
+    deleteButton.innerText = "Remove From Cart";
     deleteButton.classList.add("delete");
     deleteButton.setAttribute("data-index", index);
     card.append(nameParagraph, priceParagraph, deleteButton);
@@ -174,7 +177,6 @@ const displayInCart = () => {
     receiptContainer.classList.add("hide");
     totalParagraph.innerText = "";
     receiptContainer.innerHTML = "";
-    cartArray = [];
   });
 
   //CASH OR CREDIT SECTION
@@ -196,9 +198,11 @@ cashCheckout.addEventListener("submit", (e) => {
   let data = new FormData(cashCheckout);
   let amountTendered = data.get("amount-tendered");
   let changeAmountParagraph = document.createElement("p");
+  changeAmountParagraph.classList.add("cart-text-styling");
   total = 0;
   cartArray.forEach((cartItem) => {
     let newDiv = document.createElement("div");
+    newDiv.classList.add("cart-border");
     let cartItemName = document.createElement("p");
     cartItemName.innerText = cartItem.name;
     let cartItemPrice = document.createElement("p");
@@ -210,6 +214,7 @@ cashCheckout.addEventListener("submit", (e) => {
     cartItemImage.classList.add("img");
     newDiv.append(cartItemImage, cartItemName, cartItemPrice);
     receiptContainer.append(newDiv);
+    cartArray = [];
   });
   let tax = 0.06 * total;
   let ourTotalForReceipt = total + tax;
@@ -223,7 +228,7 @@ cashCheckout.addEventListener("submit", (e) => {
     cartContainer.innerHTML = "";
     totalParagraph.innerText = "";
     receiptContainer.innerHTML = "";
-    cartArray = [];
+    cartLink.innerText = `Cart (${cartArray.length})`;
   });
   receiptContainer.append(changeAmountParagraph, returnToMainPage);
   cashCheckout.classList.add("hide");
@@ -235,7 +240,6 @@ creditCheckout.addEventListener("submit", (e) => {
   total = 0;
   cartArray.forEach((cartItem) => {
     let newDiv = document.createElement("div");
-    newDiv.classList.add("fitted");
     let cartItemName = document.createElement("p");
     cartItemName.innerText = cartItem.name;
     let cartItemPrice = document.createElement("p");
