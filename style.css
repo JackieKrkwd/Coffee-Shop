@@ -2,13 +2,15 @@ body,
 h1,
 ul,
 .footer-paragraph,
-p {
+p,
+h3 {
   margin: 0;
   padding: 0;
 }
 
 .header {
   background-color: #155763;
+  border-bottom: 3px solid white;
   height: 115px;
 }
 
@@ -45,6 +47,13 @@ p {
 
 .about {
   text-align: center;
+  background-image: url("images/james-william-qMpsMY3q-Qg-unsplash.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .cart {
@@ -67,6 +76,10 @@ p {
   width: 80%;
 }
 
+.about-bkg {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
 .about-title,
 .about-paragraph {
   margin: 10px;
@@ -74,20 +87,28 @@ p {
 
 .menu-title {
   text-align: center;
+  margin: 0;
+  background-color: #b9aea5;
+  border-top: 3px solid white;
 }
 
 .item-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  background-color: #b9aea5;
 }
 
 .menu-card {
   border: 1px solid black;
   margin: 10px;
+  width: 200px;
+  /* height: 300px; */
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: white;
+  /* position: relative; */
 }
 
 .img {
@@ -98,6 +119,7 @@ p {
 
 .card-paragraph {
   margin: 5px;
+  text-align: center;
 }
 
 .menu-btn,
@@ -112,15 +134,28 @@ p {
   text-decoration: none;
 }
 
+/* .menu-btn {
+  position: absolute;
+  bottom: 0;
+} */
+
 .location,
 .total,
 h3 {
   text-align: center;
 }
 
+.location {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 150px;
+}
+
 .location-title,
 .location-paragraph {
   margin: 10px;
+  text-align: center;
 }
 
 .footer {
