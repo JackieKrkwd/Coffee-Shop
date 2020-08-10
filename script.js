@@ -105,7 +105,6 @@ itemContainer.addEventListener("click", (e) => {
       2
     )} Tax: $${tax.toFixed(2)} Total: $${total + tax}`;
     displayInCart();
-    console.log("hello add");
     cartLink.innerText = `Cart (${cartArray.length})`;
   }
 });
@@ -268,7 +267,7 @@ creditCheckout.addEventListener("submit", (e) => {
     cartContainer.innerHTML = "";
     totalParagraph.innerText = "";
     receiptContainer.innerHTML = "";
-    cartArray = [];
+    cartLink.innerText = `Cart`;
   });
   receiptContainer.append(ourTotalParagraph, returnToMainPage);
   creditCheckout.classList.add("hide");
