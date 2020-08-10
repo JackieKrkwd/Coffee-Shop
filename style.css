@@ -103,12 +103,12 @@ h3 {
   border: 1px solid black;
   margin: 10px;
   width: 200px;
-  /* height: 300px; */
+  height: 310px;
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: white;
-  /* position: relative; */
+  position: relative;
 }
 
 .img {
@@ -122,6 +122,16 @@ h3 {
   text-align: center;
 }
 
+.price-paragraph {
+  position: absolute;
+  bottom: 35px;
+}
+
+.menu-btn {
+  position: absolute;
+  bottom: 0;
+}
+
 .menu-btn,
 .payment {
   margin-bottom: 5px;
@@ -133,11 +143,6 @@ h3 {
   text-align: center;
   text-decoration: none;
 }
-
-/* .menu-btn {
-  position: absolute;
-  bottom: 0;
-} */
 
 .location,
 .total,

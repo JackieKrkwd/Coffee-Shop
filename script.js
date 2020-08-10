@@ -138,6 +138,7 @@ const display = () => {
     let priceParagraph = document.createElement("p");
     priceParagraph.innerText = `$${item.price.toFixed(2)}`;
     priceParagraph.classList.add("class", "card-paragraph");
+    priceParagraph.classList.add("class", "price-paragraph");
     let addMenuItem = document.createElement("button");
     addMenuItem.classList.add("addToCart");
     addMenuItem.innerText = "Add to cart";
@@ -231,7 +232,7 @@ cashCheckout.addEventListener("submit", (e) => {
     cartContainer.innerHTML = "";
     totalParagraph.innerText = "";
     receiptContainer.innerHTML = "";
-    cartLink.innerText = `Cart (${cartArray.length})`;
+    cartLink.innerText = `Cart`;
   });
   receiptContainer.append(changeAmountParagraph, returnToMainPage);
   cashCheckout.classList.add("hide");
